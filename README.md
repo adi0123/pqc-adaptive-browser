@@ -1,4 +1,4 @@
-<img width="1920" height="1080" alt="1" src="https://github.com/user-attachments/assets/0384478d-24d8-467e-b40b-63af13307a97" /># 🛡️ ZenithBrowser — Adaptive Post-Quantum Cryptography Web Browser
+# 🛡️ ZenithBrowser — Adaptive Post-Quantum Cryptography Web Browser
 
 > **An experimental web browser with an integrated TLS proxy, hybrid post-quantum key exchange, TLS 1.3 handshake analysis, performance measurement, and a Random Forest-based adaptive cryptographic selection model.**
 
