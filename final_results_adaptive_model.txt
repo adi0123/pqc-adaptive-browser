@@ -1,0 +1,2986 @@
+ivyank@divyank-VirtualBox:~/pqc_project$ # Check if file exists in the right place
+ls /usr/local/share/ca-certificates/
+
+# If pqc_proxy_ca.crt is there, the issue is the file content
+# Re-copy and force update
+sudo cp ~/pqc_project/proxy_ca.crt \
+        /usr/local/share/ca-certificates/pqc_proxy_ca.crt
+
+# The file MUST have .crt extension (yours does) AND
+# must be PEM format. Verify:
+openssl x509 -in ~/pqc_project/proxy_ca.crt -text -noout | head -5
+
+# Force update
+sudo update-ca-certificates --fresh
+
+# Should now show: 1 added
+pqc_proxy_ca.crt  proxy_ca.crt
+[sudo] password for divyank: 
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            71:5d:79:89:b4:c4:f7:6f:6e:37:d4:84:98:e9:df:cb:f6:47:c7:11
+Clearing symlinks in /etc/ssl/certs...
+done.
+Updating certificates in /etc/ssl/certs...
+rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+123 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d...
+done.
+divyank@divyank-VirtualBox:~/pqc_project$ export PYTHONPATH=$HOME/oqs/liboqs-python
+python3 main.py
+liboqs-python faulthandler is disabled
+/home/divyank/oqs/liboqs-python/oqs/oqs.py:99: UserWarning: Please install liboqs-python using pip install
+  OQS_VERSION = oqs_python_version()
+/home/divyank/oqs/liboqs-python/oqs/oqs.py:316: UserWarning: Please install liboqs-python using pip install
+  oqs_python_ver = oqs_python_version()
+/home/divyank/oqs/liboqs-python/oqs/oqs.py:323: UserWarning: Please install liboqs-python using pip install
+  f"{oqs_python_version()}",
+/home/divyank/oqs/liboqs-python/oqs/__init__.py:1: UserWarning: liboqs version (major, minor) 0.15.0 differs from liboqs-python version 0.16.0-dev
+  from oqs.oqs import (
+[Adaptive] Model loaded: adaptive_model.pkl
+Listening on 127.0.0.1:8443
+
+Client Connected: ('127.0.0.1', 51052)
+CONNECT → google.com:443
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : google.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 38.010 ms
+Packet Size       : 0 B
+Historical HS     : 0.000 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 15.702 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 19.328 ms
+=======================================================
+Host              : google.com
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+
+Client Connected: ('127.0.0.1', 51064)
+CONNECT → www.google.com:443
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : www.google.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 18.819 ms
+Packet Size       : 0 B
+Historical HS     : 0.000 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.125 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 0.591 ms
+=======================================================
+Host              : www.google.com
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+
+Client Connected: ('127.0.0.1', 51074)
+CONNECT → www.google.com:443
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : www.google.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 24.046 ms
+Packet Size       : 0 B
+Historical HS     : 0.000 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.126 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 3.121 ms
+=======================================================
+Host              : www.google.com
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+
+Client Connected: ('127.0.0.1', 51090)
+CONNECT → www.gstatic.com:443
+[CERT] Generating certificate for www.gstatic.com
+
+Client Connected: ('127.0.0.1', 59638)
+CONNECT → www.gstatic.com:443
+[CERT] Generating certificate for www.gstatic.com
+
+Client Connected: ('127.0.0.1', 59640)
+CONNECT → clients1.google.com:443
+[CERT] Generating certificate for clients1.google.com
+[CERT] Certificate ready for www.gstatic.com
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : www.gstatic.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 21.116 ms
+Packet Size       : 0 B
+Historical HS     : 0.000 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.193 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 5.431 ms
+=======================================================
+Host              : www.gstatic.com
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+[CERT] Certificate ready for clients1.google.com
+[CERT] Certificate ready for www.gstatic.com
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : clients1.google.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 20.334 ms
+Packet Size       : 0 B
+Historical HS     : 0.000 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.154 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 0.955 ms
+=======================================================
+Host              : clients1.google.com
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : www.gstatic.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 18.023 ms
+Packet Size       : 0 B
+Historical HS     : 0.000 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.125 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 1.860 ms
+=======================================================
+Host              : www.gstatic.com
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+
+Client Connected: ('127.0.0.1', 59652)
+CONNECT → play.google.com:443
+[CERT] Generating certificate for play.google.com
+[CERT] Certificate ready for play.google.com
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : play.google.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 46.244 ms
+Packet Size       : 0 B
+Historical HS     : 0.000 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.122 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 0.599 ms
+=======================================================
+Host              : play.google.com
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+
+Client Connected: ('127.0.0.1', 56820)
+CONNECT → clients1.google.com:443
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : clients1.google.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 21.712 ms
+Packet Size       : 0 B
+Historical HS     : 0.000 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.180 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 0.548 ms
+=======================================================
+Host              : clients1.google.com
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+
+Client Connected: ('127.0.0.1', 56832)
+CONNECT → www.google.com:443
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : www.google.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 19.941 ms
+Packet Size       : 0 B
+Historical HS     : 0.000 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.156 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 0.649 ms
+=======================================================
+Host              : www.google.com
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+
+Client Connected: ('127.0.0.1', 52110)
+CONNECT → www.googleadservices.com:443
+[CERT] Generating certificate for www.googleadservices.com
+
+Client Connected: ('127.0.0.1', 52114)
+CONNECT → www.googletagmanager.com:443
+[CERT] Generating certificate for www.googletagmanager.com
+
+Client Connected: ('127.0.0.1', 52122)
+CONNECT → www.googletagmanager.com:443
+[CERT] Generating certificate for www.googletagmanager.com
+[CERT] Certificate ready for www.googleadservices.com
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : www.googleadservices.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 22.679 ms
+Packet Size       : 0 B
+Historical HS     : 0.000 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.134 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 0.505 ms
+[CERT] Certificate ready for www.googletagmanager.com
+=======================================================
+Host              : www.googleadservices.com
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : www.googletagmanager.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 23.334 ms
+Packet Size       : 0 B
+Historical HS     : 0.000 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.127 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 0.625 ms
+=======================================================
+Host              : www.googletagmanager.com
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+[CERT] Certificate ready for www.googletagmanager.com
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : www.googletagmanager.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 19.926 ms
+Packet Size       : 0 B
+Historical HS     : 0.000 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.124 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 0.668 ms
+=======================================================
+Host              : www.googletagmanager.com
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+
+Client Connected: ('127.0.0.1', 52136)
+CONNECT → github.com:443
+[CERT] Generating certificate for github.com
+[CERT] Certificate ready for github.com
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : github.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 49.164 ms
+Packet Size       : 0 B
+Historical HS     : 0.000 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.166 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 1.904 ms
+
+========== SERVERHELLO PROCESSOR ==========
+Supported Versions object:
+<class 'tls_structures.SupportedVersions'>
+{'versions': [772]}
+
+Server KeyShare Group : 0x1d
+Length : 32 bytes
+
+========== TLS SESSION ==========
+Client Random : 03dd7d43ac8bb8b509685a4271e6a69b3670f18205cf7eee84c35e3dffc41749
+Server Random : f2ac626ac76e6fa099eed80d354839f312b83c7823d7a6668bcef93a0a8da70c
+
+X25519
+  Client Public : 32
+Server Public : 0
+
+ML-KEM
+Public Key : 800
+Ciphertext : 0
+
+Cipher Suite : TLS_AES_128_GCM_SHA256
+
+Host         : github.com
+TLS Version  : None
+Cipher Suite : TLS_AES_128_GCM_SHA256
+Key Exchange : X25519
+Status       : Classical TLS
+
+========== HANDSHAKE ENGINE ==========
+
+Computing X25519 Shared Secret...
+[PQC ERROR - server side] github.com: argument 'data': 'None' is not an instance of 'bytes'
+
+Client Connected: ('127.0.0.1', 52666)
+CONNECT → www.youtube.com:443
+[CERT] Generating certificate for www.youtube.com
+[CERT] Certificate ready for www.youtube.com
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : www.youtube.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 46.025 ms
+Packet Size       : 0 B
+Historical HS     : 0.000 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.173 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 0.692 ms
+=======================================================
+Host              : www.youtube.com
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+
+Client Connected: ('127.0.0.1', 52682)
+CONNECT → www.youtube.com:443
+
+Client Connected: ('127.0.0.1', 52686)
+CONNECT → www.youtube.com:443
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : www.youtube.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 41.236 ms
+Packet Size       : 0 B
+Historical HS     : 0.000 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.129 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 0.648 ms
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : www.youtube.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 35.560 ms
+Packet Size       : 0 B
+Historical HS     : 0.000 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.110 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 0.427 ms
+=======================================================
+Host              : www.youtube.com
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+=======================================================
+Host              : www.youtube.com
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+
+Client Connected: ('127.0.0.1', 52694)
+CONNECT → fonts.googleapis.com:443
+[CERT] Generating certificate for fonts.googleapis.com
+[CERT] Certificate ready for fonts.googleapis.com
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : fonts.googleapis.com
+Security Level    : 2
+Bandwidth         : 0 B
+Network Latency   : 18.387 ms
+Packet Size       : 0 B
+Historical HS     : 0.000 ms
+Selected Algorithm: ML-KEM-768
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.123 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-768
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-768
+NIST Level      : 3
+ML-KEM Public   : 1184 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 1216 bytes
+Expected Hybrid : 1216 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 0.654 ms
+
+========== SERVERHELLO PROCESSOR ==========
+
+Server KeyShare Group : 0x11ec
+Length : 1120 bytes
+
+========== HYBRID SERVER KEY ==========
+Server X25519 : 32
+ML-KEM CT     : 1088
+
+========== TLS SESSION ==========
+Client Random : 8cbf2ae79af74cab2f8a300462fa79ec6d70bb2344d92ad18290eb6e0d5f96c4
+Server Random : a9d8806bdc1432abefb6e94fb1ed26ed8e88670ff03294344151a87691a8b6d1
+
+X25519
+  Client Public : 32
+Server Public : 32
+
+ML-KEM
+Public Key : 1184
+Ciphertext : 1088
+
+Cipher Suite : TLS_AES_256_GCM_SHA384
+
+Host         : fonts.googleapis.com
+TLS Version  : None
+Cipher Suite : TLS_AES_256_GCM_SHA384
+Key Exchange : X25519MLKEM768
+Status       : PQC Protected
+Supported Versions object:
+<class 'tls_structures.SupportedVersions'>
+{'versions': [772]}
+
+========== HANDSHAKE ENGINE ==========
+
+Computing X25519 Shared Secret...
+Length : 32
+454958f2b69c4403f0c0547f588f90ec940ad7c873942e546cc2d4b6dec8477f
+
+Computing ML-KEM Shared Secret...
+Length : 32
+6072727ae58c76cbc6dd46b1324d72c43297b16edd0c3b3f99c01faf84d3124f
+
+Combining Hybrid Secret...
+
+Hybrid Secret Length : 64
+454958f2b69c4403f0c0547f588f90ec940ad7c873942e546cc2d4b6dec8477f6072727ae58c76cbc6dd46b1324d72c43297b16edd0c3b3f99c01faf84d3124f
+
+========== TLS KEY SCHEDULE ==========
+
+Transcript Hash
+47e22270870040c48a27800258dca5891fd1c239b9e7f8eabd58cf806873f5fe
+
+Early Secret
+33ad0a1c607ec03b09e6cd9893680ce210adf300aa1f2660e1b22e10f170f92a
+
+Derived Secret
+6f2615a108c702c5678f54fc9dbab69716c076189c48250cebeac3576c3611ba
+
+Handshake Secret
+b4a553786e53b1bec8be278cea0ee25e3bd1b40dca26fe36df32d46917367645
+
+Client Handshake Traffic Secret
+403b898fd437599d0fddd4df6e7904c8dd9eb3ce09d37f7aa75721075d2a61ec
+
+Server Handshake Traffic Secret
+ee5e8b816415b3b186f373e200fad12c24940e8594c3f5046da64556caff7d66
+
+Derived Secret #2
+b78f6b4ebf7715d412c99b315a6e0f6202a60f7c2e1bf4c4dcd4855a294f62b5
+
+Master Secret
+4e2b265c1121b5d9c3acba3cdf65d15023ba59bb718a3e538a5e505cf725f020
+
+Client Application Traffic Secret
+bd7c8e20d63e65ae0a51074fc16717fbcb7f2e44a5490d7abe0635481e8be976
+
+Server Application Traffic Secret
+bee1136c948ac5ec4a6319feccf9a059fb556a46ea6625683aacd591ce1e6e2d
+
+Handshake Complete
+
+============================================================
+         HYBRID PQC TLS PERFORMANCE REPORT
+============================================================
+
+X25519 Shared Secret       : 0.141 ms
+ML-KEM Decapsulation      : 0.163 ms
+Hybrid Combination        : 0.003880 ms
+TLS Key Schedule          : 1.200 ms
+------------------------------------------------------------
+Total Handshake           : 1.922 ms
+
+Bandwidth
+ML-KEM Public Key         : 1184 bytes
+ML-KEM Ciphertext         : 1088 bytes
+X25519 Public Key         : 32 bytes
+Hybrid Public Key         : 1216 bytes
+Hybrid Shared Secret      : 64 bytes
+
+============================================================
+
+========== SESSION EXPORTED ==========
+Saved -> proxy_logs/current_session.json
+
+=======================================================
+Host              : fonts.googleapis.com
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-768
+TLS               : -
+Cipher            : TLS_AES_256_GCM_SHA384
+Key Exchange      : X25519MLKEM768
+
+Handshake Time    : 1.922 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 1184 B
+  Ciphertext       : 1088 B
+  Hybrid Public    : 1216 B
+
+Status            : SUCCESS
+=======================================================
+
+Client Connected: ('127.0.0.1', 52706)
+CONNECT → i.ytimg.com:443
+[CERT] Generating certificate for i.ytimg.com
+
+Client Connected: ('127.0.0.1', 52714)
+CONNECT → accounts.google.com:443
+[CERT] Generating certificate for accounts.google.com
+[CERT] Certificate ready for i.ytimg.com
+[CERT] Certificate ready for accounts.google.com
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : accounts.google.com
+Security Level    : 2
+Bandwidth         : 0 B
+Network Latency   : 21.264 ms
+Packet Size       : 0 B
+Historical HS     : 1.922 ms
+Selected Algorithm: ML-KEM-768
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.168 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-768
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-768
+NIST Level      : 3
+ML-KEM Public   : 1184 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 1216 bytes
+Expected Hybrid : 1216 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 1.692 ms
+
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : i.ytimg.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 132.324 ms
+Packet Size       : 0 B
+Historical HS     : 1.922 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+========== SERVERHELLO PROCESSOR ==========
+
+Server KeyShare Group : 0x11ec
+Length : 1120 bytes
+
+========== HYBRID SERVER KEY ==========
+Server X25519 : 32
+ML-KEM CT     : 1088
+
+========== TLS SESSION ==========
+Client Random : cad67d9de8711a2453f018d6464ce90a2fb03211085f3743ee9548f78be880b5
+Server Random : 2e16b034c4de38634df53b012c08253f4b68aa91535ce488e142b8dbdaec64b1
+
+X25519
+  Client Public : 32
+Server Public : 32
+
+ML-KEM
+Public Key : 1184
+Ciphertext : 1088
+
+Cipher Suite : TLS_AES_128_GCM_SHA256
+
+Host         : accounts.google.com
+TLS Version  : None
+Cipher Suite : TLS_AES_128_GCM_SHA256
+Key Exchange : X25519MLKEM768
+Status       : PQC Protected
+Supported Versions object:
+<class 'tls_structures.SupportedVersions'>
+{'versions': [772]}
+
+========== HANDSHAKE ENGINE ==========
+
+Computing X25519 Shared Secret...
+Length : 32
+0935e102e439772ffa3b14cc6305e7e53b0b26b2c828464abe57f0ba3c010143
+
+Computing ML-KEM Shared Secret...
+Length : 32
+e36e63c908313ddfe1359a2c19cef27b91c07804cfa1b044ed956c8b6df56ec2
+
+Combining Hybrid Secret...
+
+Hybrid Secret Length : 64
+0935e102e439772ffa3b14cc6305e7e53b0b26b2c828464abe57f0ba3c010143e36e63c908313ddfe1359a2c19cef27b91c07804cfa1b044ed956c8b6df56ec2
+
+========== TLS KEY SCHEDULE ==========
+
+Transcript Hash
+f9fb36e194772f0235639595d24f0f5c8492fb63916493007df263c6bbbcb175
+
+Early Secret
+33ad0a1c607ec03b09e6cd9893680ce210adf300aa1f2660e1b22e10f170f92a
+
+Derived Secret
+6f2615a108c702c5678f54fc9dbab69716c076189c48250cebeac3576c3611ba
+
+Handshake Secret
+53ce7824f186181fef12463efc671182de79d5c23d59f524ce0dd416e1f33162
+
+Client Handshake Traffic Secret
+c42548e61dc4117fcccf4fff6b99c2c71c921c176f63f262ed13326a216ce867
+
+Server Handshake Traffic Secret
+ff837a7c474bad313264f6ed8da77e0603594f9ed5331fa81344301c072b13bd
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.135 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 5.119 ms
+Derived Secret #2
+9143c9881700feb8444cb3045d169dc3594f555acb89d44d7e11daf18f2860fb
+
+Master Secret
+4a976f0c7c8b00accc75d2cf153604d97ff6650088e1c65ca118cf29ce7d904c
+
+Client Application Traffic Secret
+3c7bfc59c884e2d665d4cc035ba782669d2f97ce7ce6c96995eedece500440bb
+
+Server Application Traffic Secret
+df955421208d3b252d7b8af4ad6acfb1fb02e6de25f6f85caa5ed99d3ddb2044
+
+Handshake Complete
+
+============================================================
+         HYBRID PQC TLS PERFORMANCE REPORT
+============================================================
+
+X25519 Shared Secret       : 0.091 ms
+ML-KEM Decapsulation      : 0.139 ms
+Hybrid Combination        : 0.002729 ms
+TLS Key Schedule          : 0.802 ms
+------------------------------------------------------------
+Total Handshake           : 1.305 ms
+
+Bandwidth
+ML-KEM Public Key         : 1184 bytes
+ML-KEM Ciphertext         : 1088 bytes
+X25519 Public Key         : 32 bytes
+Hybrid Public Key         : 1216 bytes
+Hybrid Shared Secret      : 64 bytes
+
+============================================================
+
+========== SESSION EXPORTED ==========
+Saved -> proxy_logs/current_session.json
+
+=======================================================
+Host              : accounts.google.com
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-768
+TLS               : -
+Cipher            : TLS_AES_128_GCM_SHA256
+Key Exchange      : X25519MLKEM768
+
+Handshake Time    : 1.305 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 1184 B
+  Ciphertext       : 1088 B
+  Hybrid Public    : 1216 B
+
+Status            : SUCCESS
+=======================================================
+=======================================================
+Host              : i.ytimg.com
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+
+Client Connected: ('127.0.0.1', 52730)
+CONNECT → googleads.g.doubleclick.net:443
+[CERT] Generating certificate for googleads.g.doubleclick.net
+
+Client Connected: ('127.0.0.1', 52732)
+CONNECT → rr4---sn-ntqe6nes.googlevideo.com:443
+[CERT] Generating certificate for rr4---sn-ntqe6nes.googlevideo.com
+
+Client Connected: ('127.0.0.1', 52734)
+CONNECT → rr4---sn-ntqe6nes.googlevideo.com:443
+[CERT] Generating certificate for rr4---sn-ntqe6nes.googlevideo.com
+
+Client Connected: ('127.0.0.1', 60264)
+CONNECT → www.youtube.com:443
+
+Client Connected: ('127.0.0.1', 60272)
+CONNECT → www.youtube.com:443
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : www.youtube.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 43.649 ms
+Packet Size       : 0 B
+Historical HS     : 1.613 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.141 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 0.741 ms
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : www.youtube.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 48.427 ms
+Packet Size       : 0 B
+Historical HS     : 1.613 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.118 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 0.563 ms
+=======================================================
+Host              : www.youtube.com
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+=======================================================
+Host              : www.youtube.com
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+[CERT] Certificate ready for googleads.g.doubleclick.net
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : googleads.g.doubleclick.net
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 37.004 ms
+Packet Size       : 0 B
+Historical HS     : 1.613 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.130 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 7.386 ms
+=======================================================
+Host              : googleads.g.doubleclick.net
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+[CERT] Certificate ready for rr4---sn-ntqe6nes.googlevideo.com
+[CERT] Certificate ready for rr4---sn-ntqe6nes.googlevideo.com
+
+Client Connected: ('127.0.0.1', 60278)
+CONNECT → www.google.co.in:443
+[CERT] Generating certificate for www.google.co.in
+
+Client Connected: ('127.0.0.1', 60292)
+CONNECT → fonts.googleapis.com:443
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : fonts.googleapis.com
+Security Level    : 2
+Bandwidth         : 0 B
+Network Latency   : 19.416 ms
+Packet Size       : 0 B
+Historical HS     : 1.613 ms
+Selected Algorithm: ML-KEM-768
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.121 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-768
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-768
+NIST Level      : 3
+ML-KEM Public   : 1184 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 1216 bytes
+Expected Hybrid : 1216 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 4.074 ms
+
+========== SERVERHELLO PROCESSOR ==========
+
+Server KeyShare Group : 0x11ec
+Length : 1120 bytes
+
+========== HYBRID SERVER KEY ==========
+Server X25519 : 32
+ML-KEM CT     : 1088
+
+========== TLS SESSION ==========
+Client Random : 616789ea90d1c4ddccdf65aae504371f24a9b0d990439f98effce9e9445afd16
+Server Random : 9dc6faa44dc606cb8f8dd7088fd8863aa5edf860c70378668559fe6cf619a01b
+
+X25519
+  Client Public : 32
+Server Public : 32
+
+ML-KEM
+Public Key : 1184
+Ciphertext : 1088
+
+Cipher Suite : TLS_AES_256_GCM_SHA384
+
+Host         : fonts.googleapis.com
+TLS Version  : None
+Cipher Suite : TLS_AES_256_GCM_SHA384
+Key Exchange : X25519MLKEM768
+Status       : PQC Protected
+Supported Versions object:
+<class 'tls_structures.SupportedVersions'>
+{'versions': [772]}
+
+========== HANDSHAKE ENGINE ==========
+
+Computing X25519 Shared Secret...
+Length : 32
+4852847d11fbf7296fd0e36e6f3a411847b29a308218c0a771ae6a5fe6d6b448
+
+Computing ML-KEM Shared Secret...
+Length : 32
+10a80352e935afbb432bd86a0c185d36893f2bd17d044b86bdaf19bb58fde08c
+
+Combining Hybrid Secret...
+
+Hybrid Secret Length : 64
+4852847d11fbf7296fd0e36e6f3a411847b29a308218c0a771ae6a5fe6d6b44810a80352e935afbb432bd86a0c185d36893f2bd17d044b86bdaf19bb58fde08c
+
+========== TLS KEY SCHEDULE ==========
+
+Transcript Hash
+b44fa6024233466f7ac78a291e119236f354a2668155b96d8148c1e86709a7ec
+
+Early Secret
+33ad0a1c607ec03b09e6cd9893680ce210adf300aa1f2660e1b22e10f170f92a
+
+Derived Secret
+6f2615a108c702c5678f54fc9dbab69716c076189c48250cebeac3576c3611ba
+
+Handshake Secret
+8db5a1b4d6788def72251b92b8d6c31e6c6f7e8a0f69e7b4932b164c99f88dd5
+
+Client Handshake Traffic Secret
+28f6e5ef31237f7f06906fba965d424e9e51c4c7c5c920b29a295c04533a7359
+
+Server Handshake Traffic Secret
+e30c186a501786c775279db78ef0b4f0f0d6c1f18e37e15b5be99323eb5831df
+
+Derived Secret #2
+25573ade01407589717bc382a4ddf9a0cc8a504721901e08591aeaac22ff6990
+
+Master Secret
+015ef33b150a99294b2fd4de271e2e0a853edbee9205ef2efbb5112255a41f68
+
+Client Application Traffic Secret
+1cb940a4d33a21650ac4099a3dcf44638d140537b76eb0d442376520a1d25297
+
+Server Application Traffic Secret
+8d85c525e38aa4924e14a6ccc4a66aa71ce358ccd3df30b6757fe86db471bf8f
+
+Handshake Complete
+
+============================================================
+         HYBRID PQC TLS PERFORMANCE REPORT
+============================================================
+
+X25519 Shared Secret       : 0.095 ms
+ML-KEM Decapsulation      : 0.124 ms
+Hybrid Combination        : 0.000854 ms
+TLS Key Schedule          : 0.254 ms
+------------------------------------------------------------
+Total Handshake           : 0.580 ms
+
+Bandwidth
+ML-KEM Public Key         : 1184 bytes
+ML-KEM Ciphertext         : 1088 bytes
+X25519 Public Key         : 32 bytes
+Hybrid Public Key         : 1216 bytes
+Hybrid Shared Secret      : 64 bytes
+
+============================================================
+
+========== SESSION EXPORTED ==========
+Saved -> proxy_logs/current_session.json
+
+=======================================================
+Host              : fonts.googleapis.com
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-768
+TLS               : -
+Cipher            : TLS_AES_256_GCM_SHA384
+Key Exchange      : X25519MLKEM768
+
+Handshake Time    : 0.580 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 1184 B
+  Ciphertext       : 1088 B
+  Hybrid Public    : 1216 B
+
+Status            : SUCCESS
+=======================================================
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : rr4---sn-ntqe6nes.googlevideo.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 184.784 ms
+Packet Size       : 0 B
+Historical HS     : 1.613 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.197 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 2.412 ms
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : rr4---sn-ntqe6nes.googlevideo.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 188.294 ms
+Packet Size       : 0 B
+Historical HS     : 1.613 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.117 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 0.994 ms
+
+========== SERVERHELLO PROCESSOR ==========
+
+Server KeyShare Group : 0x1d
+Length : 32 bytes
+
+========== TLS SESSION ==========
+Client Random : d9b40053f8c1690a4dc323b8f4bd179c50597c3eee8687350a4cb0c3bc8215ce
+Server Random : 7fd55bdaf42041e49e7efa553808f04dec57297cf08552f72b43a898359ff208
+
+X25519
+  Client Public : 32
+Server Public : 0
+
+ML-KEM
+Public Key : 800
+Ciphertext : 0
+
+Cipher Suite : TLS_AES_128_GCM_SHA256
+
+Host         : rr4---sn-ntqe6nes.googlevideo.com
+TLS Version  : None
+Cipher Suite : TLS_AES_128_GCM_SHA256
+Key Exchange : X25519
+Status       : Classical TLS
+Supported Versions object:
+<class 'tls_structures.SupportedVersions'>
+{'versions': [772]}
+
+========== HANDSHAKE ENGINE ==========
+
+Computing X25519 Shared Secret...
+[PQC ERROR - server side] rr4---sn-ntqe6nes.googlevideo.com: argument 'data': 'None' is not an instance of 'bytes'
+
+Client Connected: ('127.0.0.1', 60304)
+
+========== SERVERHELLO PROCESSOR ==========
+
+Server KeyShare Group : 0x1d
+Length : 32 bytes
+
+========== TLS SESSION ==========
+Client Random : ec353c965060f48d89021c01ee6599622a0e4f5badbf08e663b9c04dcb3ea8a7
+Server Random : d3f8a493a3fdceea45cdeb4de3823e1294ffe44da6ae8c0261af02f564d11e7e
+
+X25519
+  Client Public : 32
+Server Public : 0
+
+ML-KEM
+Public Key : 800
+Ciphertext : 0
+
+Cipher Suite : TLS_AES_128_GCM_SHA256
+
+Host         : rr4---sn-ntqe6nes.googlevideo.com
+TLS Version  : None
+Cipher Suite : TLS_AES_128_GCM_SHA256
+Key Exchange : X25519
+Status       : Classical TLS
+Supported Versions object:
+<class 'tls_structures.SupportedVersions'>
+{'versions': [772]}
+
+========== HANDSHAKE ENGINE ==========
+
+Computing X25519 Shared Secret...
+[PQC ERROR - server side] rr4---sn-ntqe6nes.googlevideo.com: argument 'data': 'None' is not an instance of 'bytes'
+CONNECT → rr4---sn-ntqe6nes.googlevideo.com:443
+
+Client Connected: ('127.0.0.1', 60318)
+CONNECT → rr4---sn-ntqe6nes.googlevideo.com:443
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : rr4---sn-ntqe6nes.googlevideo.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 178.565 ms
+Packet Size       : 0 B
+Historical HS     : 1.269 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.119 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 0.633 ms
+[CERT] Certificate ready for www.google.co.in
+
+========== SERVERHELLO PROCESSOR ==========
+
+Server KeyShare Group : 0x1d
+Length : 32 bytes
+
+========== TLS SESSION ==========
+Client Random : 9bcd35560dbd5aa43b9b3d0f1f7f09d42d63bb6224e89a6374316be3381a66d2
+Server Random : 6280a1f6e800f8b593dba8567a2aa0234114b72f4bb179e57e8f2b5a73c59ad2
+
+X25519
+  Client Public : 32
+Server Public : 0
+
+ML-KEM
+Public Key : 800
+Ciphertext : 0
+
+Cipher Suite : TLS_AES_128_GCM_SHA256
+
+Host         : rr4---sn-ntqe6nes.googlevideo.com
+TLS Version  : None
+Cipher Suite : TLS_AES_128_GCM_SHA256
+Key Exchange : X25519
+Status       : Classical TLS
+Supported Versions object:
+<class 'tls_structures.SupportedVersions'>
+{'versions': [772]}
+
+========== HANDSHAKE ENGINE ==========
+
+Computing X25519 Shared Secret...
+[PQC ERROR - server side] rr4---sn-ntqe6nes.googlevideo.com: argument 'data': 'None' is not an instance of 'bytes'
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : www.google.co.in
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 24.150 ms
+Packet Size       : 0 B
+Historical HS     : 1.269 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.117 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 1.773 ms
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : rr4---sn-ntqe6nes.googlevideo.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 167.051 ms
+Packet Size       : 0 B
+Historical HS     : 1.269 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.117 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 0.604 ms
+=======================================================
+Host              : www.google.co.in
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+
+Client Connected: ('127.0.0.1', 60332)
+CONNECT → rr4---sn-ntqe6nes.googlevideo.com:443
+
+========== SERVERHELLO PROCESSOR ==========
+
+Server KeyShare Group : 0x1d
+Length : 32 bytes
+
+========== TLS SESSION ==========
+Client Random : 5ca7fc501b6ebd222c0d3f316def691bcd24b165df87b43dc22c962047bafd35
+Server Random : 08b054aa2c3527ee5b57460eca0bcffb34db619624db8d407d6618457d733443
+
+X25519
+  Client Public : 32
+Server Public : 0
+
+ML-KEM
+Public Key : 800
+Ciphertext : 0
+
+Cipher Suite : TLS_AES_128_GCM_SHA256
+
+Host         : rr4---sn-ntqe6nes.googlevideo.com
+TLS Version  : None
+Cipher Suite : TLS_AES_128_GCM_SHA256
+Key Exchange : X25519
+Status       : Classical TLS
+Supported Versions object:
+<class 'tls_structures.SupportedVersions'>
+{'versions': [772]}
+
+========== HANDSHAKE ENGINE ==========
+
+Computing X25519 Shared Secret...
+[PQC ERROR - server side] rr4---sn-ntqe6nes.googlevideo.com: argument 'data': 'None' is not an instance of 'bytes'
+
+Client Connected: ('127.0.0.1', 60346)
+CONNECT → rr4---sn-ntqe6nes.googlevideo.com:443
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : rr4---sn-ntqe6nes.googlevideo.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 193.180 ms
+Packet Size       : 0 B
+Historical HS     : 1.269 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.132 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 3.774 ms
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : rr4---sn-ntqe6nes.googlevideo.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 170.977 ms
+Packet Size       : 0 B
+Historical HS     : 1.269 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.132 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 0.588 ms
+
+========== SERVERHELLO PROCESSOR ==========
+
+Server KeyShare Group : 0x1d
+Length : 32 bytes
+
+========== TLS SESSION ==========
+Client Random : 2c639b6e78514406f351c6cf8737dcd06584a201a57bb8a2a5ca94c878d66afe
+Server Random : 0377c21028f3745b4497152500eac788fbff0d972a1310574c4fe83fe63ce993
+
+X25519
+  Client Public : 32
+Server Public : 0
+
+ML-KEM
+Public Key : 800
+Ciphertext : 0
+
+Cipher Suite : TLS_AES_128_GCM_SHA256
+
+Host         : rr4---sn-ntqe6nes.googlevideo.com
+TLS Version  : None
+Cipher Suite : TLS_AES_128_GCM_SHA256
+Key Exchange : X25519
+Status       : Classical TLS
+Supported Versions object:
+<class 'tls_structures.SupportedVersions'>
+{'versions': [772]}
+
+========== HANDSHAKE ENGINE ==========
+
+Computing X25519 Shared Secret...
+[PQC ERROR - server side] rr4---sn-ntqe6nes.googlevideo.com: argument 'data': 'None' is not an instance of 'bytes'
+
+Client Connected: ('127.0.0.1', 60350)
+CONNECT → youtube.com:443
+[CERT] Generating certificate for youtube.com
+
+========== SERVERHELLO PROCESSOR ==========
+
+Server KeyShare Group : 0x1d
+Length : 32 bytes
+
+========== TLS SESSION ==========
+Client Random : 9bfffd18ee645df5cf2d22455f323f121032419e7816e226bd484cd214be5ab9
+Server Random : 834bbbcd031bb9648137bbef2ec84c3cd20c658596ac3a5b3ec148934e5fc71b
+
+X25519
+  Client Public : 32
+Server Public : 0
+
+ML-KEM
+Public Key : 800
+Ciphertext : 0
+
+Cipher Suite : TLS_AES_128_GCM_SHA256
+
+Host         : rr4---sn-ntqe6nes.googlevideo.com
+TLS Version  : None
+Cipher Suite : TLS_AES_128_GCM_SHA256
+Key Exchange : X25519
+Status       : Classical TLS
+Supported Versions object:
+<class 'tls_structures.SupportedVersions'>
+{'versions': [772]}
+
+========== HANDSHAKE ENGINE ==========
+
+Computing X25519 Shared Secret...
+[PQC ERROR - server side] rr4---sn-ntqe6nes.googlevideo.com: argument 'data': 'None' is not an instance of 'bytes'
+
+Client Connected: ('127.0.0.1', 60358)
+CONNECT → fonts.gstatic.com:443
+[CERT] Generating certificate for fonts.gstatic.com
+[CERT] Certificate ready for youtube.com
+
+Client Connected: ('127.0.0.1', 60366)
+CONNECT → fonts.gstatic.com:443
+[CERT] Generating certificate for fonts.gstatic.com
+
+Client Connected: ('127.0.0.1', 60368)
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : youtube.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 47.064 ms
+Packet Size       : 0 B
+Historical HS     : 1.269 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.209 ms
+CONNECT → static.doubleclick.net:443
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+[CERT] Generating certificate for static.doubleclick.net
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 1.096 ms
+=======================================================
+Host              : youtube.com
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+[CERT] Certificate ready for fonts.gstatic.com
+[CERT] Certificate ready for fonts.gstatic.com
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : fonts.gstatic.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 18.157 ms
+Packet Size       : 0 B
+Historical HS     : 1.269 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.154 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 1.022 ms
+=======================================================
+Host              : fonts.gstatic.com
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : fonts.gstatic.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 38.101 ms
+Packet Size       : 0 B
+Historical HS     : 1.269 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.149 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 4.117 ms
+=======================================================
+Host              : fonts.gstatic.com
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+[CERT] Certificate ready for static.doubleclick.net
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : static.doubleclick.net
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 22.338 ms
+Packet Size       : 0 B
+Historical HS     : 1.269 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.130 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 0.504 ms
+=======================================================
+Host              : static.doubleclick.net
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+
+Client Connected: ('127.0.0.1', 54110)
+CONNECT → clients1.google.com:443
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : clients1.google.com
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 20.653 ms
+Packet Size       : 0 B
+Historical HS     : 1.269 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.121 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 0.533 ms
+=======================================================
+Host              : clients1.google.com
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+
+Client Connected: ('127.0.0.1', 42090)
+CONNECT → sbi.bank.in:443
+[CERT] Generating certificate for sbi.bank.in
+[CERT] Certificate ready for sbi.bank.in
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : sbi.bank.in
+Security Level    : 3
+Bandwidth         : 0 B
+Network Latency   : 106.547 ms
+Packet Size       : 0 B
+Historical HS     : 1.269 ms
+Selected Algorithm: ML-KEM-1024
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.133 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-1024
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-1024
+NIST Level      : 5
+ML-KEM Public   : 1568 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 1600 bytes
+Expected Hybrid : 1600 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 1.612 ms
+
+========== SERVERHELLO PROCESSOR ==========
+Supported Versions object:
+<class 'tls_structures.SupportedVersions'>
+{'versions': [772]}
+
+Server KeyShare Group : 0x1d
+Length : 32 bytes
+
+========== TLS SESSION ==========
+Client Random : b111f313af9a395b052447d6829d030f413b2add9a79c1817d58cbc5a99dae9f
+Server Random : 50422aefb01fb98317ebbec196a2e8afe3afd7bab6b6acf0bbfc831c50abb2dd
+
+X25519
+  Client Public : 32
+Server Public : 0
+
+ML-KEM
+Public Key : 1568
+Ciphertext : 0
+
+Cipher Suite : TLS_AES_128_GCM_SHA256
+
+Host         : sbi.bank.in
+TLS Version  : None
+Cipher Suite : TLS_AES_128_GCM_SHA256
+Key Exchange : X25519
+Status       : Classical TLS
+
+========== HANDSHAKE ENGINE ==========
+
+Computing X25519 Shared Secret...
+[PQC ERROR - server side] sbi.bank.in: argument 'data': 'None' is not an instance of 'bytes'
+
+Client Connected: ('127.0.0.1', 44198)
+CONNECT → www.joinindianarmy.nic.in:443
+[CERT] Generating certificate for www.joinindianarmy.nic.in
+[CERT] Certificate ready for www.joinindianarmy.nic.in
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : www.joinindianarmy.nic.in
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 883.404 ms
+Packet Size       : 0 B
+Historical HS     : 1.269 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.115 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 0.656 ms
+=======================================================
+Host              : www.joinindianarmy.nic.in
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+
+Client Connected: ('127.0.0.1', 44212)
+CONNECT → www.joinindianarmy.nic.in:443
+
+Client Connected: ('127.0.0.1', 44218)
+CONNECT → www.joinindianarmy.nic.in:443
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : www.joinindianarmy.nic.in
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 26.422 ms
+Packet Size       : 0 B
+Historical HS     : 1.269 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.226 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 1.991 ms
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : www.joinindianarmy.nic.in
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 21.845 ms
+Packet Size       : 0 B
+Historical HS     : 1.269 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.124 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 0.939 ms
+=======================================================
+Host              : www.joinindianarmy.nic.in
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+=======================================================
+Host              : www.joinindianarmy.nic.in
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+
+Client Connected: ('127.0.0.1', 44230)
+CONNECT → joinindianarmy.nic.in:443
+[CERT] Generating certificate for joinindianarmy.nic.in
+[CERT] Certificate ready for joinindianarmy.nic.in
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : joinindianarmy.nic.in
+Security Level    : 1
+Bandwidth         : 0 B
+Network Latency   : 81.353 ms
+Packet Size       : 0 B
+Historical HS     : 1.269 ms
+Selected Algorithm: ML-KEM-512
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.114 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-512
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-512
+NIST Level      : 1
+ML-KEM Public   : 800 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 832 bytes
+Expected Hybrid : 832 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 0.695 ms
+=======================================================
+Host              : joinindianarmy.nic.in
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-512
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 800 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 832 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+
+Client Connected: ('127.0.0.1', 59844)
+CONNECT → www.isro.gov.in:443
+[CERT] Generating certificate for www.isro.gov.in
+[CERT] Certificate ready for www.isro.gov.in
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : www.isro.gov.in
+Security Level    : 3
+Bandwidth         : 0 B
+Network Latency   : 41.654 ms
+Packet Size       : 0 B
+Historical HS     : 1.269 ms
+Selected Algorithm: ML-KEM-1024
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.165 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-1024
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-1024
+NIST Level      : 5
+ML-KEM Public   : 1568 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 1600 bytes
+Expected Hybrid : 1600 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 0.660 ms
+=======================================================
+Host              : www.isro.gov.in
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-1024
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 1568 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 1600 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+
+Client Connected: ('127.0.0.1', 45090)
+CONNECT → www.isro.gov.in:443
+
+Client Connected: ('127.0.0.1', 45106)
+CONNECT → static.cloudflareinsights.com:443
+[CERT] Generating certificate for static.cloudflareinsights.com
+
+Client Connected: ('127.0.0.1', 45114)
+CONNECT → www.isro.gov.in:443
+
+Client Connected: ('127.0.0.1', 45126)
+CONNECT → www.isro.gov.in:443
+
+Client Connected: ('127.0.0.1', 45128)
+CONNECT → www.isro.gov.in:443
+
+Client Connected: ('127.0.0.1', 45134)
+CONNECT → www.isro.gov.in:443
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : www.isro.gov.in
+Security Level    : 3
+Bandwidth         : 0 B
+Network Latency   : 26.950 ms
+Packet Size       : 0 B
+Historical HS     : 1.269 ms
+Selected Algorithm: ML-KEM-1024
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.121 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-1024
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-1024
+NIST Level      : 5
+ML-KEM Public   : 1568 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 1600 bytes
+Expected Hybrid : 1600 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 0.559 ms
+=======================================================
+Host              : www.isro.gov.in
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-1024
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 1568 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 1600 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : www.isro.gov.in
+Security Level    : 3
+Bandwidth         : 0 B
+Network Latency   : 25.106 ms
+Packet Size       : 0 B
+Historical HS     : 1.269 ms
+Selected Algorithm: ML-KEM-1024
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.145 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-1024
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-1024
+NIST Level      : 5
+ML-KEM Public   : 1568 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 1600 bytes
+Expected Hybrid : 1600 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 9.524 ms
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : www.isro.gov.in
+Security Level    : 3
+Bandwidth         : 0 B
+Network Latency   : 22.895 ms
+Packet Size       : 0 B
+Historical HS     : 1.269 ms
+Selected Algorithm: ML-KEM-1024
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.191 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-1024
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-1024
+NIST Level      : 5
+ML-KEM Public   : 1568 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 1600 bytes
+Expected Hybrid : 1600 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 6.389 ms
+=======================================================
+Host              : www.isro.gov.in
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-1024
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 1568 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 1600 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+=======================================================
+Host              : www.isro.gov.in
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-1024
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 1568 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 1600 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : www.isro.gov.in
+Security Level    : 3
+Bandwidth         : 0 B
+Network Latency   : 20.105 ms
+Packet Size       : 0 B
+Historical HS     : 1.269 ms
+Selected Algorithm: ML-KEM-1024
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.133 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-1024
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-1024
+NIST Level      : 5
+ML-KEM Public   : 1568 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 1600 bytes
+Expected Hybrid : 1600 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 0.739 ms
+=======================================================
+Host              : www.isro.gov.in
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-1024
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 1568 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 1600 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : www.isro.gov.in
+Security Level    : 3
+Bandwidth         : 0 B
+Network Latency   : 26.187 ms
+Packet Size       : 0 B
+Historical HS     : 1.269 ms
+Selected Algorithm: ML-KEM-1024
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.122 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-1024
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-1024
+NIST Level      : 5
+ML-KEM Public   : 1568 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 1600 bytes
+Expected Hybrid : 1600 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 0.598 ms
+=======================================================
+Host              : www.isro.gov.in
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-1024
+TLS               : -
+Cipher            : -
+Key Exchange      : -
+
+Handshake Time    : 0.000 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 1568 B
+  Ciphertext       : 0 B
+  Hybrid Public    : 1600 B
+
+Status            : FAILED (no ServerHello)
+=======================================================
+[CERT] Certificate ready for static.cloudflareinsights.com
+
+==============================================
+           ADAPTIVE ML-KEM SELECTION
+==============================================
+Host              : static.cloudflareinsights.com
+Security Level    : 2
+Bandwidth         : 0 B
+Network Latency   : 22.142 ms
+Packet Size       : 0 B
+Historical HS     : 1.269 ms
+Selected Algorithm: ML-KEM-768
+==============================================
+
+[PQCEngine] X25519 keypair generated: 32 bytes in 0.117 ms
+[Modifier] Hybrid group inserted
+[Modifier] Selected ML-KEM: ML-KEM-768
+[Modifier] KeyShare extension found
+
+========== ADAPTIVE ML-KEM ==========
+Algorithm       : ML-KEM-768
+NIST Level      : 3
+ML-KEM Public   : 1184 bytes
+X25519 Public   : 32 bytes
+Hybrid Public   : 1216 bytes
+Expected Hybrid : 1216 bytes
+======================================
+[Modifier] Adaptive Hybrid KeyShare inserted
+[Adaptive] ClientHello build time: 2.593 ms
+
+========== SERVERHELLO PROCESSOR ==========
+
+Server KeyShare Group : 0x11ec
+Length : 1120 bytes
+
+========== HYBRID SERVER KEY ==========
+Server X25519 : 32
+ML-KEM CT     : 1088
+
+========== TLS SESSION ==========
+Client Random : 7de3fbae5018d2c35a68e4f25d60197dd3610aa145c909af5c2206867eba2bb2
+Server Random : 4e1649705d2ac0c8666ada65159f2ce00e1d0c35bc01563b53a41bd275757e79
+
+X25519
+  Client Public : 32
+Server Public : 32
+
+ML-KEM
+Public Key : 1184
+Ciphertext : 1088
+
+Cipher Suite : TLS_AES_128_GCM_SHA256
+
+Host         : static.cloudflareinsights.com
+TLS Version  : None
+Cipher Suite : TLS_AES_128_GCM_SHA256
+Key Exchange : X25519MLKEM768
+Status       : PQC Protected
+Supported Versions object:
+<class 'tls_structures.SupportedVersions'>
+{'versions': [772]}
+
+========== HANDSHAKE ENGINE ==========
+
+Computing X25519 Shared Secret...
+Length : 32
+cf4d4bf565c2c32c13c9f4481eedf6590276c42a4c39ac346128824b15f9e977
+
+Computing ML-KEM Shared Secret...
+Length : 32
+c0373502583d4c108497e49def581a1bb37f7da69ccd73f5720ce07aac0d039a
+
+Combining Hybrid Secret...
+
+Hybrid Secret Length : 64
+cf4d4bf565c2c32c13c9f4481eedf6590276c42a4c39ac346128824b15f9e977c0373502583d4c108497e49def581a1bb37f7da69ccd73f5720ce07aac0d039a
+
+========== TLS KEY SCHEDULE ==========
+
+Transcript Hash
+aba9f9811edc1ff84852f6e389f91c7ee4885c0198778d962e5ac6699fdb87e6
+
+Early Secret
+33ad0a1c607ec03b09e6cd9893680ce210adf300aa1f2660e1b22e10f170f92a
+
+Derived Secret
+6f2615a108c702c5678f54fc9dbab69716c076189c48250cebeac3576c3611ba
+
+Handshake Secret
+ae820eea2a203fb9ad2466f56fe651946bc930b98ce9a54fe3c48ba70811a8a6
+
+Client Handshake Traffic Secret
+ca3209dc13a73627febe961b788807e436743e5ca9af381d693f2b709726388b
+
+Server Handshake Traffic Secret
+8806b52bdbef135e4173ddf8be23d1343a0aa689c0c880e082f13b49dd348022
+
+Derived Secret #2
+70fd60d644c0437fddf96c23333de1d1cab494ef26d3181a0e005e1ed5c70e05
+
+Master Secret
+99e6f9b03221fd4710fb3de04fa8f02da30e04703865fc9c90f3913f87dbb2e3
+
+Client Application Traffic Secret
+6f01b700f8caf76d81fd768a3ea6ad055ddbd8209c5fffb6e32f501a92f7140b
+
+Server Application Traffic Secret
+88478fafcbb94d39dfd50ae04a8e19abe813fe0972961830988e45f1c0747779
+
+Handshake Complete
+
+============================================================
+         HYBRID PQC TLS PERFORMANCE REPORT
+============================================================
+
+X25519 Shared Secret       : 0.102 ms
+ML-KEM Decapsulation      : 0.116 ms
+Hybrid Combination        : 0.001088 ms
+TLS Key Schedule          : 0.440 ms
+------------------------------------------------------------
+Total Handshake           : 0.780 ms
+
+Bandwidth
+ML-KEM Public Key         : 1184 bytes
+ML-KEM Ciphertext         : 1088 bytes
+X25519 Public Key         : 32 bytes
+Hybrid Public Key         : 1216 bytes
+Hybrid Shared Secret      : 64 bytes
+
+============================================================
+
+========== SESSION EXPORTED ==========
+Saved -> proxy_logs/current_session.json
+
+=======================================================
+Host              : static.cloudflareinsights.com
+Mode              : PQC Hybrid
+ML-KEM            : ML-KEM-768
+TLS               : -
+Cipher            : TLS_AES_128_GCM_SHA256
+Key Exchange      : X25519MLKEM768
+
+Handshake Time    : 0.780 ms
+
+Bandwidth
+  X25519 Public    : 32 B
+  ML-KEM Public    : 1184 B
+  Ciphertext       : 1088 B
+  Hybrid Public    : 1216 B
+
+Status            : SUCCESS
+=======================================================
+[DONE] Connection closed: fonts.googleapis.com
+[DONE] Connection closed: accounts.google.com
+[DONE] Connection closed: fonts.googleapis.com
+[DONE] Connection closed: joinindianarmy.nic.in
+[DONE] Connection closed: clients1.google.com
+[DONE] Connection closed: www.googleadservices.com
+[DONE] Connection closed: www.youtube.com
+[DONE] Connection closed: fonts.gstatic.com
+[DONE] Connection closed: www.google.co.in
+[DONE] Connection closed: www.googletagmanager.com
+[DONE] Connection closed: fonts.gstatic.com
+[DONE] Connection closed: youtube.com
+[DONE] Connection closed: www.youtube.com
+[DONE] Connection closed: www.youtube.com
+[DONE] Connection closed: static.doubleclick.net
+[DONE] Connection closed: i.ytimg.com
+[DONE] Connection closed: www.googletagmanager.com
+[DONE] Connection closed: www.youtube.com
+[DONE] Connection closed: googleads.g.doubleclick.net
+[DONE] Connection closed: google.com
+[DONE] Connection closed: www.isro.gov.in
+[DONE] Connection closed: www.gstatic.com
+[DONE] Connection closed: www.google.com
+[DONE] Connection closed: www.joinindianarmy.nic.in
+[DONE] Connection closed: www.google.com
+[DONE] Connection closed: www.gstatic.com
+[DONE] Connection closed: www.joinindianarmy.nic.in
+[DONE] Connection closed: play.google.com
+[DONE] Connection closed: clients1.google.com
+[DONE] Connection closed: clients1.google.com
+[DONE] Connection closed: www.google.com
+[DONE] Connection closed: www.joinindianarmy.nic.in
+[DONE] Connection closed: www.youtube.com
+[DONE] Connection closed: static.cloudflareinsights.com
+[DONE] Connection closed: www.isro.gov.in
+[DONE] Connection closed: www.isro.gov.in
+[DONE] Connection closed: www.isro.gov.in
+[DONE] Connection closed: www.isro.gov.in
+^CTraceback (most recent call last):
+  File "/home/divyank/pqc_project/main.py", line 6, in <module>
+    proxy.start()
+  File "/home/divyank/pqc_project/proxy.py", line 1152, in start
+    server.accept()
+  File "/usr/lib/python3.12/socket.py", line 295, in accept
+    fd, addr = self._accept()
+               ^^^^^^^^^^^^^^
+KeyboardInterrupt
+
+divyank@divyank-VirtualBox:~/pqc_project$ 
+
